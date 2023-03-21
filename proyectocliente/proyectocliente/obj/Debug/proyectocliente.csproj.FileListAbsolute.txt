@@ -1,0 +1,21 @@
+C:\Users\TATITA\source\repos\proyectocliente\proyectocliente\obj\Debug\proyectocliente.csproj.AssemblyReference.cache
+C:\Users\TATITA\source\repos\proyectocliente\proyectocliente\obj\Debug\proyectocliente.Form1.resources
+C:\Users\TATITA\source\repos\proyectocliente\proyectocliente\obj\Debug\proyectocliente.Properties.Resources.resources
+C:\Users\TATITA\source\repos\proyectocliente\proyectocliente\obj\Debug\proyectocliente.csproj.GenerateResource.cache
+C:\Users\TATITA\source\repos\proyectocliente\proyectocliente\obj\Debug\proyectocliente.csproj.CoreCompileInputs.cache
+C:\Users\TATITA\source\repos\proyectocliente\proyectocliente\bin\Debug\proyectocliente.exe.config
+C:\Users\TATITA\source\repos\proyectocliente\proyectocliente\bin\Debug\proyectocliente.exe
+C:\Users\TATITA\source\repos\proyectocliente\proyectocliente\bin\Debug\proyectocliente.pdb
+C:\Users\TATITA\source\repos\proyectocliente\proyectocliente\obj\Debug\proyectocliente.exe
+C:\Users\TATITA\source\repos\proyectocliente\proyectocliente\obj\Debug\proyectocliente.pdb
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\bin\Debug\proyectocliente.exe.config
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\bin\Debug\proyectocliente.exe
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\bin\Debug\proyectocliente.pdb
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\obj\Debug\proyectocliente.csproj.AssemblyReference.cache
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\obj\Debug\proyectocliente.csproj.SuggestedBindingRedirects.cache
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\obj\Debug\proyectocliente.Form1.resources
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\obj\Debug\proyectocliente.Properties.Resources.resources
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\obj\Debug\proyectocliente.csproj.GenerateResource.cache
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\obj\Debug\proyectocliente.csproj.CoreCompileInputs.cache
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\obj\Debug\proyectocliente.exe
+C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\malo\proyectocliente\proyectocliente\obj\Debug\proyectocliente.pdb
