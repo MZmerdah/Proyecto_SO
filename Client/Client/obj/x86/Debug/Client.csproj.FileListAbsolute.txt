@@ -1,0 +1,75 @@
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.csprojAssemblyReference.cache
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.GanadasDia.resources
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.Ganadores10min.resources
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.HoraFecha.resources
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.PartidasGanadas.resources
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.Principal.resources
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.User.resources
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.Properties.Resources.resources
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.csproj.GenerateResource.cache
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\bin\Debug\Client.exe
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\bin\Debug\Client.pdb
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.exe
+C:\Users\sergi\Desktop\ProjectSO-master\Client\Client\obj\x86\Debug\Client.pdb
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\bin\Debug\Client.exe
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\bin\Debug\Client.pdb
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.csprojAssemblyReference.cache
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.GanadasDia.resources
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.Ganadores10min.resources
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.HoraFecha.resources
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.Juego.resources
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.PartidasGanadas.resources
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.Principal.resources
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.User.resources
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.Properties.Resources.resources
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.csproj.GenerateResource.cache
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.exe
+C:\Users\sergi\Desktop\SO\Proyecto_SO\ProjectSO\Client\Client\obj\x86\Debug\Client.pdb
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.exe
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.pdb
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\bin\Debug\Client.exe
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\bin\Debug\Client.pdb
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.GanadasDia.resources
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.Ganadores10min.resources
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.HoraFecha.resources
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.PartidasGanadas.resources
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.Principal.resources
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.User.resources
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.Properties.Resources.resources
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.csproj.GenerateResource.Cache
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\Siimoo Bonnevie\Documents\GitHub\projectSO_1\ProjectSO\Client\Client\obj\x86\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\bin\Debug\Client.exe.config
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\bin\Debug\Client.exe
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\bin\Debug\Client.pdb
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.csproj.SuggestedBindingRedirects.cache
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.GanadasDia.resources
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.Ganadores10min.resources
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.HoraFecha.resources
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.PartidasGanadas.resources
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.Principal.resources
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.User.resources
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.Properties.Resources.resources
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.csproj.GenerateResource.cache
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.exe
+C:\Users\TATITA\Desktop\SO\ProyectoSO_2\ProyectoSO_2\Client\Client\obj\x86\Debug\Client.pdb
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\bin\Debug\Client.exe.config
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\bin\Debug\Client.exe
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\bin\Debug\Client.pdb
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.csproj.SuggestedBindingRedirects.cache
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.GanadasDia.resources
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.Ganadores10min.resources
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.HoraFecha.resources
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.PartidasGanadas.resources
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.Principal.resources
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.User.resources
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.Properties.Resources.resources
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.csproj.GenerateResource.cache
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.exe
+C:\Users\TATITA\Desktop\VIRTUAL2\Client\Client\obj\x86\Debug\Client.pdb
