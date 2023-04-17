@@ -2,14 +2,14 @@ Proyecto_SO
 
 Versión #1
 
-Creada por:  Mohamed y Maria
-Revisada por: Julia 
+Creada por:  Mohamed y María 
+Revisada por:
 
 https://www.youtube.com/watch?v=V9NzZfcPkgo&feature=youtu.be
 
 Versión #2
 
 Creada por:  Mohamed y Maria
-Revisada por: Julia 
+Revisada por: 
 
 https://youtu.be/EspfKsTTXCg
