@@ -25,16 +25,22 @@ namespace Client
         HoraFecha hf;
         GanadasDia gd;
         Ganadores10min gm;
+        Jugadores jug;
         Invitar inv;
         Thread atender;
         User user;
 
+        int maxSeleccion = 1;
         int numeroConectados = 0;
         string conectados = string.Empty;
-
+        string usuarioOrig = string.Empty;
         delegate void DelegadoParaEscribir(string mensaje);
 
         delegate void MostrarConectados(string[] vector);
+        delegate void DelegadoInvitado(string a, string usuarioActual);
+        delegate void DelegadoInvitadoAceptaRechaza(string a, string acepta);
+        string anfitrion;
+
         public Principal()
         {
             InitializeComponent();
@@ -63,16 +69,30 @@ namespace Client
             return estado;
         }
 
-        public void setUser(string a)  
+        public void setUser(string a, string usuarioOrig)  
         {
             this.username = a;
+            this.usuarioOrig = usuarioOrig;
         }
 
         public void PonContador(string contador)
         {
             servicios_rec.Text = contador;
         }
-       
+        public void MuestraInvitacion(string a, string usuarioActual)
+        {
+            if (a.ToUpper() != usuarioOrig.ToUpper())
+            {
+                panel3.Visible = true;
+                label4.Text = "Invitación de " + a;
+            }
+        }
+
+        public void ActualizaInvitado(string invitado, string acepta)
+        {
+            inv.actualizaInvitados(invitado, acepta);
+        }
+
         public void MuestraConectados(string[] vector)
         {
             ShowConectados.RowHeadersVisible = false;
@@ -107,10 +127,11 @@ namespace Client
             {
                 //Recibimos mensaje del servidor
                 byte[] msg2 = new byte[80];
+                string mensaje = "";
                 server.Receive(msg2);
                 string[] trozos = Encoding.ASCII.GetString(msg2).Split('/');
                 int codigo = Convert.ToInt32(trozos[0]);
-                string mensaje = trozos[1].Split('\0')[0];
+                mensaje = trozos[1].Split('\0')[0];
 
                 switch (codigo)
                 {
@@ -146,12 +167,12 @@ namespace Client
 
                     case 7: // Respuesta a lista de conectados 
                         string[] vector = mensaje.Split(',');
-                        int numeroConectadosNuevo = vector.Length;
-                     
+                        int numeroConectadosNuevo = vector.Length - 1;
+                        string nombreNuevo = vector[numeroConectadosNuevo].Replace("\n", string.Empty);
+
                         // Comprobar si se ha conectado un nuevo usuario
-                        if (numeroConectadosNuevo > numeroConectados)
+                        if (numeroConectadosNuevo > numeroConectados && nombreNuevo.ToUpper() != usuarioOrig.ToUpper())
                         {
-                            string nombreNuevo = vector[numeroConectados];
                             MessageBox.Show("Se ha conectado un nuevo usuario: " + nombreNuevo);
                         }
                         // Comprobar si un usuario se ha desconectado
@@ -169,36 +190,28 @@ namespace Client
                         ShowConectados.Invoke(delegadoMuestra, new object[] { vector });
                         break;
 
-
-                    /* case 7: // Respuesta a lista de conectados 
-
-                        string[] vector = mensaje.Split(',');
-                        int numeroConectadosNuevo = vector.Length;
-
-                        // Comprobar si se ha conectado un nuevo usuario
-                        if (numeroConectadosNuevo > numeroConectados)
-                        {
-                            string nombreNuevo = vector[numeroConectados];
-                            MessageBox.Show("Se ha conectado un nuevo usuario: " + nombreNuevo);
-                        }
-
-                        // Actualizar el número de usuarios conectados
-                        numeroConectados = numeroConectadosNuevo;
-
-                        // Mostrar la lista de usuarios conectados
-                        MostrarConectados delegadoMuestra = new MostrarConectados(MuestraConectados);
-                        ShowConectados.Invoke(delegadoMuestra, new object[] { vector });
-                        break;
-                    */
-
                     case 6: // Respuesta servicios realizados 
 
                         // servicios_rec.Text = "Número total de servicios: " + mensaje;
                         DelegadoParaEscribir delegado = new DelegadoParaEscribir(PonContador);
                         servicios_rec.Invoke(delegado, new object[] {mensaje});
                         break;
+                    case 990: // Notificación de invitación a partida
+                        anfitrion = trozos[2];
+                        DelegadoInvitado delegadoInv = new DelegadoInvitado(MuestraInvitacion);
+                        panel3.Invoke(delegadoInv, new object[] { anfitrion, trozos[3] });
+                        
+                        
+                        break;
+                    case 991:
 
-                   
+                        if (trozos[2] == usuarioOrig)
+                        {
+                            DelegadoInvitadoAceptaRechaza delegadoAcepta = new DelegadoInvitadoAceptaRechaza(ActualizaInvitado);
+                            inv.Invoke(delegadoAcepta, new object[] { trozos[3], trozos[4] });
+                        }
+                       
+                        break;
 
                 }
             }
@@ -240,7 +253,7 @@ namespace Client
         {
             gd = new GanadasDia();
             gd.setServer(server);
-            gd.setName(username);
+            gd.setName(usuarioOrig);
             gd.ShowDialog();
         }
 
@@ -252,7 +265,7 @@ namespace Client
             {
                 //Mensaje de desconexión
                 estado = 1;
-                string mensaje = "0/" + username;
+                string mensaje = "0/" + usuarioOrig;
 
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
@@ -295,47 +308,75 @@ namespace Client
 
         }
 
-        private void invitar_Click(object sender, EventArgs e)
+        private void invitar_Click(object sender, EventArgs e) //es el de jugar
         {
-            if(ShowConectados.Rows.Count == 0 || ShowConectados.SelectedRows.Count == 0)
+            jug = new Jugadores();
+            jug.ShowDialog();
+
+            int opcion = jug.OpcionSeleccionada;
+
+            switch(opcion)
             {
-                MessageBox.Show("No tienes amigos para jugar");
+                //En función de cuantas personaes se puede elegir
+                case 1:
+                    ShowConectados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    ShowConectados.MultiSelect = false;
+                    break;
+                case 2:
+                    //solo se puedan seleccionar 2 filas
+                    ShowConectados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    ShowConectados.MultiSelect = true;
+                    maxSeleccion = 2;
+                    break;
+                case 3:
+                    //solo se puedan seleccionar 2 filas
+                    ShowConectados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    ShowConectados.MultiSelect = true;
+                    maxSeleccion = 3;
+                    break;
             }
-            else 
-            {
-                if (ShowConectados.SelectedRows.Count > 3)
-                {
-                }
-                else
-                {
-                    //enviamos mensaje al servidor
-                   int select = ShowConectados.SelectedRows.Count;
-                   for (int i = 0; i < select; i++ )
-                   {
-                        string mensaje = "/1" + ShowConectados.SelectedRows[i].Cells[i].Value.ToString();
-                        //Enviamos el mensaje al servidor
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                        server.Send(msg);
-                   }
+            jugar.Enabled = false;
+            button4.Enabled = true;
 
-                    string nombre1 = ShowConectados.SelectedRows[0].Cells[0].Value.ToString();
-                    string nombre2 = ShowConectados.SelectedRows[1].Cells[1].Value.ToString();
-                    string nombre3 = ShowConectados.SelectedRows[2].Cells[2].Value.ToString();
+            //if(ShowConectados.Rows.Count == 0 || ShowConectados.SelectedRows.Count == 0)
+            //{
+            //    MessageBox.Show("No tienes amigos para jugar");
+            //}
+            //else 
+            //{
+            //    if (ShowConectados.SelectedRows.Count > 3)
+            //    {
+            //    }
+            //    else
+            //    {
+            //        //enviamos mensaje al servidor
+            //       int select = ShowConectados.SelectedRows.Count;
+            //       for (int i = 0; i < select; i++ )
+            //       {
+            //            string mensaje = "/1" + ShowConectados.SelectedRows[i].Cells[i].Value.ToString();
+            //            //Enviamos el mensaje al servidor
+            //            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            //            server.Send(msg);
+            //       }
+
+            //        string nombre1 = ShowConectados.SelectedRows[0].Cells[0].Value.ToString();aaa
+            //        string nombre2 = ShowConectados.SelectedRows[1].Cells[1].Value.ToString();
+            //        string nombre3 = ShowConectados.SelectedRows[2].Cells[2].Value.ToString();
                   
 
-                    //abrimos formulario
-                    inv = new Invitar();
-                    inv.setServer(server);
-                    inv.setNombre(nombre1, nombre2, nombre3); //hay que controlar el error de si no se selecciona mas de 1 jugador
-                    inv.ShowDialog();
+            //        //abrimos formulario
+            //        inv = new Invitar();
+            //        inv.setServer(server);
+            //        inv.setNombre(nombre1, nombre2, nombre3); //hay que controlar el error de si no se selecciona mas de 1 jugador
+            //        inv.ShowDialog();
                   
-                    //servidor envia mensaje que los que inivitas
-                    //aceptan o rechazan y lo envian al servidor
-                    //el servidor te lo dice 
+            //        //servidor envia mensaje que los que inivitas
+            //        //aceptan o rechazan y lo envian al servidor
+            //        //el servidor te lo dice 
 
                   
-                }
-            }
+        //        }
+        //    }
 
         }
 
@@ -348,6 +389,63 @@ namespace Client
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            inv = new Invitar();
+
+            string nombre1 = string.Empty, nombre2 = string.Empty, nombre3 = string.Empty;
+
+            switch(ShowConectados.SelectedRows.Count)
+            {
+                case 1:
+                    nombre1 = (string) ShowConectados.SelectedRows[0].Cells[0].Value;
+                    break;
+                case 2:
+                    nombre1 = (string)ShowConectados.SelectedRows[0].Cells[0].Value;
+                    nombre2 = (string)ShowConectados.SelectedRows[1].Cells[0].Value;
+                    break;
+                case 3:
+                    nombre1 = (string)ShowConectados.SelectedRows[0].Cells[0].Value;
+                    nombre2 = (string)ShowConectados.SelectedRows[1].Cells[0].Value;
+                    nombre3 = (string)ShowConectados.SelectedRows[2].Cells[0].Value;
+                    break;
+            }
+
+            inv.setNombre(nombre1, nombre2, nombre3);
+            inv.setUsuario(usuarioOrig);
+            inv.setServer(server);
+            inv.ShowDialog();
+
+            jugar.Enabled = true;
+            button4.Enabled = false;
+        }
+
+        private void ShowConectados_SelectionChanged(object sender, EventArgs e)
+        {
+            if(ShowConectados.SelectedRows.Count > maxSeleccion)
+            {
+                ShowConectados.SelectedRows[0].Selected = false;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            EnviarDatos($"991/Invitacion/{anfitrion}/{username}/aceptar", server);
+            panel3.Visible = false;
+        }
+
+        private void EnviarDatos(string respuesta, Socket socket)
+        {
+            byte[] respuestaBytes = Encoding.ASCII.GetBytes(respuesta.ToUpper());
+            socket.Send(respuestaBytes);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            EnviarDatos($"991/Invitacion/{anfitrion}/{username}/rechazar", server);
+            panel3.Visible = false;
         }
     }
 }

@@ -145,3 +145,41 @@ C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\Ver
 C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\Version #3\Versión 3\Client\Client\obj\x86\Debug\Client.csproj.CoreCompileInputs.cache
 C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\Version #3\Versión 3\Client\Client\obj\x86\Debug\Client.exe
 C:\Users\Siimoo Bonnevie\Desktop\Sis_Telecos\2B\SO_1\Proyecto SO\Proyecto_SO\Version #3\Versión 3\Client\Client\obj\x86\Debug\Client.pdb
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\bin\Debug\Client.exe.config
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\bin\Debug\Client.exe
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\bin\Debug\Client.pdb
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.csproj.SuggestedBindingRedirects.cache
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.GanadasDia.resources
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.Ganadores10min.resources
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.HoraFecha.resources
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.Invitar.resources
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.juego.resources
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.PartidasGanadas.resources
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.Principal.resources
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.User.resources
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.Properties.Resources.resources
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.csproj.GenerateResource.cache
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.exe
+C:\Users\Júlia\Documents\GitHub\SO\Proyecto_SO\Client\Client\obj\x86\Debug\Client.pdb
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\bin\Debug\Client.exe.config
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\bin\Debug\Client.exe
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\bin\Debug\Client.pdb
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.csproj.SuggestedBindingRedirects.cache
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.GanadasDia.resources
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.Ganadores10min.resources
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.HoraFecha.resources
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.Invitar.resources
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.juego.resources
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.PartidasGanadas.resources
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.Principal.resources
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.User.resources
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.Properties.Resources.resources
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.csproj.GenerateResource.cache
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.exe
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.pdb
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.Jugadores.resources
+C:\Users\TATITA\Desktop\SO\Proyecto_SO_novalistaconectados\Proyecto_SO\Client\Client\obj\x86\Debug\Client.Invitacion.resources

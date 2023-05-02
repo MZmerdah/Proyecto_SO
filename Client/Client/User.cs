@@ -18,7 +18,7 @@ namespace Client
     {
         int estado = 0;
         Socket server;
-        int puerto = 50025;
+        int puerto = 9524;
         Principal prin; 
 
         public User()
@@ -34,13 +34,13 @@ namespace Client
         {
             this.server = a;
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Login
         {
             if (username.Text != "" && password.Text != "")
             {
                 //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
                 //al que deseamos conectarnos
-                IPAddress direc = IPAddress.Parse("192.168.56.102");
+                IPAddress direc = IPAddress.Parse("192.168.56.101");
                 IPEndPoint ipep = new IPEndPoint(direc, puerto);
 
 
@@ -79,7 +79,7 @@ namespace Client
                     MessageBox.Show("Welcome " + user + ".");
                     prin = new Principal();
                     prin.setServer(server);
-                    prin.setUser(user);
+                    prin.setUser(user, user);
                     this.Hide();
                     prin.ShowDialog();
 
@@ -127,11 +127,11 @@ namespace Client
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //Registro
         {
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
+            IPAddress direc = IPAddress.Parse("192.168.56.101");
             IPEndPoint ipep = new IPEndPoint(direc, puerto);
 
 

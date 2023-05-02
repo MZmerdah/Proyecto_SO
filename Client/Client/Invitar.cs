@@ -17,6 +17,7 @@ namespace Client
         string nombre1;
         string nombre2;
         string nombre3;
+        string miUsuario;
         juego jg;
         public Invitar()
         {
@@ -26,9 +27,10 @@ namespace Client
         private void Invitar_Load(object sender, EventArgs e)
         {
             empezar.Enabled = false;
-            label1.Text = nombre1;
-            label2.Text = nombre2;
-            label3.Text = nombre3;
+           
+
+           
+
 
         }
         public void setServer(Socket a)
@@ -40,16 +42,28 @@ namespace Client
             this.nombre1 = nombre1;
             this.nombre2 = nombre2;
             this.nombre3 = nombre3;
+            label1.Text = nombre1.Replace("\n", string.Empty);
+            label2.Text = nombre2.Replace("\n", string.Empty); ;
+            label3.Text = nombre3.Replace("\n", string.Empty); ;
+
+            
         }
-        public void RecibirInvitacion(Socket socket)
+
+        public void setUsuario(string usuario)
+        {
+            miUsuario = usuario;
+        }
+        public string RecibirInvitacion(Socket socket)
         {
             byte[] buffer = new byte[1024];
             int bytesRecibidos = socket.Receive(buffer);
             string invitacion = Encoding.ASCII.GetString(buffer, 0, bytesRecibidos);
             MessageBox.Show(invitacion);
+
+            return invitacion;
         }
 
-        public void EnviarRespuesta(string respuesta, Socket socket)
+        public void Invitacion(string respuesta, Socket socket)
         {
             byte[] respuestaBytes = Encoding.ASCII.GetBytes(respuesta.ToUpper());
             socket.Send(respuestaBytes);
@@ -89,6 +103,9 @@ namespace Client
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+
+
             jg = new juego();
             //set server
             //set nombres juugadores
@@ -96,6 +113,78 @@ namespace Client
             jg.ShowDialog();
             //abre el juego
             //cuando se abre el juego timer 3, 2, 1, YA
+        }
+
+        private void Invitar_Shown(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(nombre1))
+            {
+                Invitacion($"990/Invitacion/{miUsuario}/{nombre1}", server);
+            }
+
+            if (!string.IsNullOrEmpty(nombre2))
+            {
+                Invitacion($"990/Invitacion/{miUsuario}/{nombre2}", server);
+            }
+
+            if (!string.IsNullOrEmpty(nombre3))
+            {
+                Invitacion($"990/Invitacion/{miUsuario}/{nombre3}", server);
+            }
+
+            empezar.Enabled = false;
+        }
+
+        public void actualizaInvitados(string invitado, string acepta)
+        {
+            if(label1.Text.ToUpper() == invitado)
+            {
+                if (acepta.ToUpper().StartsWith("ACEPTAR"))
+                    label1.BackColor = Color.Green;
+                else
+                    label1.BackColor = Color.Red;
+            }
+
+            if (label2.Text.ToUpper() == invitado)
+            {
+                if (acepta.ToUpper().StartsWith("ACEPTAR"))
+                    label2.BackColor = Color.Green;
+                else
+                    label2.BackColor = Color.Red;
+            }
+
+            if (label3.Text.ToUpper() == invitado)
+            {
+                if (acepta.ToUpper().StartsWith("ACEPTAR"))
+                    label3.BackColor = Color.Green;
+                else
+                    label3.BackColor = Color.Red;
+            }
+
+            bool compruebaInv1 = !string.IsNullOrEmpty(label1.Text);
+            bool compruebaInv2 = !string.IsNullOrEmpty(label2.Text);
+            bool compruebaInv3 = !string.IsNullOrEmpty(label3.Text);
+
+            if (label1.BackColor == Color.Red || label2.BackColor == Color.Red || label3.BackColor == Color.Red)
+            {
+                MessageBox.Show("Uno o más invitados han rechazado la invitación.");
+                this.Close();
+            }
+            else if(compruebaInv1 && label1.BackColor == Color.Green && 
+                compruebaInv2 && label2.BackColor == Color.Green && 
+                compruebaInv3 && label3.BackColor == Color.Green)
+            {
+                empezar.Enabled = true;
+            }
+            else if(compruebaInv1 && label1.BackColor == Color.Green &&
+                compruebaInv2 && label2.BackColor == Color.Green && !compruebaInv3)
+            {
+                empezar.Enabled = true;
+            }
+            else if(compruebaInv1 && label1.BackColor == Color.Green && !compruebaInv2 && !compruebaInv3)
+            {
+                empezar.Enabled = true;
+            }
         }
     }
 }

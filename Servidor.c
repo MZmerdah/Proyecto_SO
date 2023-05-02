@@ -28,6 +28,9 @@ int i;
 int sockets[100];
 ListaConectados miLista2;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+char desconectado[20];
+
+char nombreAnfitrion[20];
 
 //Funciones
 int Pon (ListaConectados *lista, char nombre[20], int socket){
@@ -63,7 +66,9 @@ int DamePosicion (ListaConectados *lista, char nombre[20]){
 	int encontrado=0;
 	while ((i<lista->num)&&!encontrado){
 		if (strcmp(lista->conectados[i].nombre,nombre)==0)
-			encontrado =1;
+		{
+			encontrado = 1;
+		}
 		else
 			i=i+1;
 	}
@@ -78,15 +83,22 @@ int Elimina (ListaConectados *lista, char nombre[20]){
 	int pos = DamePosicion (lista, nombre);
 	if (pos==-1)
 		return -1;
-	else {
-		int i;
-		for (i=pos; i<lista->num-1; i++)
-		{
-			lista-> conectados [i] = lista->conectados[i+1];
+/*	else {*/
+/*		int i;*/
+/*		for (i=pos; i<lista->num-1; i++)*/
+/*		{*/
+/*			lista-> conectados [i] = lista->conectados[i+1];*/
 			//strcpy(lista->conectados[i].nombre = lista->conectados[i+1].nombre, nombre);
 			//lista->conectados[i].socket =lista->conectados[i+1].socket;
+/*		}*/
+	else {
+		// Guardar el nombre en desconectado antes de que se elimine
+		strcpy(desconectado, lista->conectados[pos].nombre);
+		
+		for (int i = pos; i < lista->num-1; i++) {
+			lista->conectados[i] = lista->conectados[i+1];
 		}
-		lista ->num--;
+		lista->num--;
 		return 0;
 	}
 }
@@ -241,7 +253,8 @@ void *AtenderCliente (void *socket)
 				{
 					sprintf (respuesta,"100/Correct");
 					pthread_mutex_lock(&mutex); //No interrumpir
-					int poner = Pon (&miLista2, nombre_usuario, miLista2.num);
+					int poner = Pon (&miLista2, nombre_usuario, sock_conn);
+					//int poner = Pon (&miLista2, nombre_usuario, miLista2.num);
 					pthread_mutex_unlock(&mutex); //Ahora si se puede interrumpir
 					if (poner == 3)
 					{
@@ -518,8 +531,77 @@ void *AtenderCliente (void *socket)
 			}	
 			
 		}
-		
-		
+		else if(codigo == 990) // Enviamos codigo invitacion solo a los invitados.
+		{
+			
+			char nombre[20]; // nombre del invitado
+			strcpy(respuesta, "990/"); // 990
+			
+			t = strtok( NULL, "/");
+			strcat(respuesta, t); // invitacion
+			strcat(respuesta, "/");
+			t = strtok( NULL, "/"); 
+			strcat(respuesta, t); // nombre anfitrion
+			strcat(respuesta, "/");
+			
+			strcpy(nombreAnfitrion, t); // guardamos el nombre del anfitrion... solo nos permite tener un anfitrion/servidor.
+			
+			t = strtok( NULL, "/");
+			strcat(respuesta, t); // nombre invitado
+			strcpy(nombre, t);
+			printf("Enviando invitacion respuesta %s.", respuesta);
+			
+			pthread_mutex_lock(&mutex); //No interrumpir
+			
+			for(int j = 0; j < miLista2.num; j++)
+			{
+				printf("Nombre lista |%s| posicion %i nombre cmp |%s|", miLista2.conectados[j].nombre, j, nombre);
+				if(miLista2.conectados[j].nombre == nombre)
+				{
+					//write (miLista2.conectados[j].socket, respuesta, strlen(respuesta));
+					printf("Enviando invitacion a %s", nombre);
+				}
+				
+				write (sockets[j], respuesta, strlen(respuesta));
+			}
+			
+			pthread_mutex_unlock(&mutex); //Ahora si se puede interrumpir
+		}
+		else if(codigo == 991) // Enviamos codigo aceptacion/rechazo invitacion.
+		{
+			
+			char nombre[20]; // nombre del invitado
+			strcpy(respuesta, "991/"); // 991
+			
+			t = strtok( NULL, "/");
+			strcat(respuesta, t); // invitacion
+			strcat(respuesta, "/");
+			t = strtok( NULL, "/"); 
+			strcat(respuesta, t); // nombre anfitrion
+			strcat(respuesta, "/");
+			t = strtok( NULL, "/");
+			strcat(respuesta, t); // nombre invitado
+			strcat(respuesta, "/");
+			t = strtok( NULL, "/");
+			strcat(respuesta, t); // acepta/rechaza
+			
+			printf("Enviando respuesta a invitacion %s.", respuesta);
+			
+			pthread_mutex_lock(&mutex); //No interrumpir
+			
+			for(int j = 0; j < miLista2.num; j++)
+			{
+				printf("Nombre lista |%s| posicion %i nombre cmp |%s|", miLista2.conectados[j].nombre, j, nombreAnfitrion);
+				
+				if(miLista2.conectados[j].nombre == nombreAnfitrion)
+				{
+				//	write (miLista2.conectados[j].socket, respuesta, strlen(respuesta));
+				}
+				write (sockets[j], respuesta, strlen(respuesta));
+			}
+			
+			pthread_mutex_unlock(&mutex); //Ahora si se puede interrumpir
+		}
 		
 		if (codigo != 0)
 		{
@@ -529,7 +611,7 @@ void *AtenderCliente (void *socket)
 			write (sock_conn, respuesta, strlen(respuesta));
 		}
 		
-		if ((codigo ==1)||(codigo ==2)||(codigo ==3)||(codigo ==4))
+		if ((codigo ==1)||(codigo ==2)||(codigo ==3)||(codigo ==4))//quitar codigo enviar confirmacion invitacion
 		{
 			pthread_mutex_lock(&mutex); //No interrumpir
 			contador_servicios = contador_servicios +1;
@@ -542,12 +624,23 @@ void *AtenderCliente (void *socket)
 				write (sockets[j], notificacion, strlen(notificacion));
 			
 		}
-		if (codigo ==100 || codigo==0)
+		if (codigo ==100 /*|| codigo==0*/)
 		{
 			char misConectados [300];
 			char notificacion [310];
 			DameConectados (&miLista2, misConectados);
 			sprintf(notificacion, "7/%s",misConectados);
+			int j;
+			for (j=0; j<i; j++)
+				
+				write (sockets[j], notificacion, strlen(notificacion));
+		}
+		if (codigo==0)
+		{
+			//char misConectados [300];
+			char notificacion [310];
+			//DameConectados (&miLista2, misConectados);
+			sprintf(notificacion, "7/%i,%s", miLista2.num, desconectado);
 			int j;
 			for (j=0; j<i; j++)
 				
@@ -574,7 +667,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// Establecemos el puerto 
-	serv_adr.sin_port = htons(50025);
+	serv_adr.sin_port = htons(9524);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind");
 	
