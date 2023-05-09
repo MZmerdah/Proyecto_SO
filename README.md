@@ -2,14 +2,14 @@ Proyecto_SO
 
 Versión #1 
     
-Creada por:  Mohamed y María 
+Creada por:  Mohamed
 Revisada por: Julia
 
 https://www.youtube.com/watch?v=V9NzZfcPkgo&feature=youtu.be
 
 Versión #2
 
-Creada por:  Mohamed y María
+Creada por:  Mohamed
 Revisada por: Julia
 
 https://youtu.be/EspfKsTTXCg
@@ -17,8 +17,8 @@ https://youtu.be/EspfKsTTXCg
 
 Versión #3
 
-Creada por:  Mohamed y María
-Revisada por: Julia
+Creada por:  Mohamed
+Revisada por: Julia y María
 
 Interfaz Juego
 Creada por:  Julia 
@@ -28,8 +28,8 @@ https://youtu.be/93CTcyYuagI
 
 Versión #4
 
-Creada por: María y Julia 
-Resvisada por: Mohamed 
+Creada por: María
+Resvisada por: Julía
 
 https://www.youtube.com/watch?v=pntfB30UOro
 
