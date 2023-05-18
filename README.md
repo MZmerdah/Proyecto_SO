@@ -17,8 +17,8 @@ https://youtu.be/EspfKsTTXCg
 
 Versión #3
 
-Creada por:  Mohamed y María
-Revisada por: Julia
+Creada por:  Todo el grupo
+Revisada por: todo el grupo
 
 Interfaz Juego
 Creada por:  Julia 
