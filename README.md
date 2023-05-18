@@ -38,9 +38,6 @@ Versión #5
 Creada por: Todo el grupo
 Resvisada por: Todo el grupo
 
-Interfaz Juego
-Creada por: 
-
 https://www.youtube.com/watch?v=BsehPvhaUXs
 
 
