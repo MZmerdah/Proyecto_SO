@@ -35,8 +35,8 @@ https://www.youtube.com/watch?v=pntfB30UOro
 
 Versión #5
 
-Creada por: María y Mohamed
-Resvisada por: 
+Creada por: Todo el grupo
+Resvisada por: Todo el grupo
 
 Interfaz Juego
 Creada por: 
