@@ -203,6 +203,16 @@ namespace Client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GameOver {
+            get {
+                object obj = ResourceManager.GetObject("GameOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap grey_down {
             get {
                 object obj = ResourceManager.GetObject("grey_down", resourceCulture);
@@ -293,9 +303,49 @@ namespace Client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap powerup {
+            get {
+                object obj = ResourceManager.GetObject("powerup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap red_heart {
+            get {
+                object obj = ResourceManager.GetObject("red_heart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Sin_título {
             get {
                 object obj = ResourceManager.GetObject("Sin título", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap slow {
+            get {
+                object obj = ResourceManager.GetObject("slow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap speedboost {
+            get {
+                object obj = ResourceManager.GetObject("speedboost", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -38,11 +38,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(46, 38);
+            this.label1.Location = new System.Drawing.Point(24, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(225, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "Por favor, espere a que accepten la invitación";
+            this.label1.UseMnemonic = false;
             // 
             // label2
             // 
@@ -66,13 +67,13 @@
             // 
             // empezar
             // 
-            this.empezar.Location = new System.Drawing.Point(92, 173);
+            this.empezar.Location = new System.Drawing.Point(84, 162);
             this.empezar.Name = "empezar";
             this.empezar.Size = new System.Drawing.Size(122, 32);
             this.empezar.TabIndex = 3;
             this.empezar.Text = "EMPEZAR";
             this.empezar.UseVisualStyleBackColor = true;
-            this.empezar.Click += new System.EventHandler(this.button1_Click);
+            this.empezar.Click += new System.EventHandler(this.PartidaNueva_Click);
             // 
             // Invitar
             // 

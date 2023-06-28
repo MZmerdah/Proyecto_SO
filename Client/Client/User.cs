@@ -10,6 +10,7 @@ using System.Data.OleDb;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Diagnostics.Contracts;
 
 namespace Client
 {
@@ -18,7 +19,8 @@ namespace Client
     {
         int estado = 0;
         Socket server;
-        int puerto = 9000;
+        int puerto = 9500;
+        string ip = "192.168.56.104";
         Principal prin; 
 
         public User()
@@ -36,11 +38,40 @@ namespace Client
         }
         private void button1_Click(object sender, EventArgs e) //Login
         {
+            if (string.IsNullOrEmpty(username.Text))
+            {
+                if (string.IsNullOrEmpty(password.Text))
+                {
+                    MessageBox.Show("Rellena los datos");
+
+                }
+                else
+                {
+                    MessageBox.Show("No sabia que había un sin-nombre entre nosotros");
+
+                }
+
+                return;
+            }
+            else if (string.IsNullOrEmpty(username.Text))
+            {
+                if (string.IsNullOrEmpty(password.Text))
+                {
+                    MessageBox.Show("Rellena los datos");
+                }
+                else
+                {
+                    MessageBox.Show("Escribe la contraseña");
+                }
+
+                return;
+            }
+
             if (username.Text != "" && password.Text != "")
             {
                 //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
                 //al que deseamos conectarnos
-                IPAddress direc = IPAddress.Parse("192.168.56.101");
+                IPAddress direc = IPAddress.Parse(ip);
                 IPEndPoint ipep = new IPEndPoint(direc, puerto);
 
 
@@ -129,9 +160,38 @@ namespace Client
 
         private void button2_Click(object sender, EventArgs e) //Registro
         {
+            if (string.IsNullOrEmpty(username.Text))
+            {
+                if (string.IsNullOrEmpty(password.Text))
+                {
+                    MessageBox.Show("Rellena los datos");
+
+                }
+                else
+                {
+                    MessageBox.Show("¿No tienes nombre?");
+
+                }
+
+                return;
+            }
+            else if (string.IsNullOrEmpty(username.Text))
+            {
+                if (string.IsNullOrEmpty(password.Text))
+                {
+                    MessageBox.Show("Rellena los datos");
+                }
+                else
+                {
+                    MessageBox.Show("Escribe la contraseña. ¿O quieres que te roben los datos?");
+                }
+
+                return;
+            }
+
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
-            IPAddress direc = IPAddress.Parse("192.168.56.101");
+            IPAddress direc = IPAddress.Parse(ip);
             IPEndPoint ipep = new IPEndPoint(direc, puerto);
 
 
@@ -193,6 +253,24 @@ namespace Client
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked == true)
+            {
+                password.PasswordChar = '\0';
+            }
+            else
+            {
+                password.PasswordChar = '*';
+            }
+        }
+
+        private void password_TextChanged(object sender, EventArgs e)
         {
 
         }

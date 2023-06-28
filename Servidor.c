@@ -22,6 +22,17 @@ typedef struct {
 	int num;
 }ListaConectados;
 
+typedef struct {
+	char nombre1[20];
+	char nombre2[20];
+	char nombre3[20];
+}Partida;
+
+typedef struct {
+	Partida partidas[100];
+	int num;
+}ListaPartidas;
+
 //Declaracion de variables globales
 int contador_servicios;
 int i;
@@ -29,6 +40,7 @@ int sockets[100];
 ListaConectados miLista2;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 char desconectado[20];
+ListaPartidas miListaPartidas;
 
 char nombreAnfitrion[20];
 
@@ -78,6 +90,22 @@ int DamePosicion (ListaConectados *lista, char nombre[20]){
 		return -1;
 }
 
+void PartidaNueva(char* nombre1, char* nombre2, char* nombre3, ListaPartidas* lista) {
+	// Crear una nueva partida
+	Partida nuevaPartida;
+	strcpy(nuevaPartida.nombre1, nombre1);
+	strcpy(nuevaPartida.nombre2, nombre2);
+	strcpy(nuevaPartida.nombre3, nombre3);
+	
+	// Agregar la nueva partida a la lista de partidas
+	lista->partidas[lista->num] = nuevaPartida;
+	lista->num++;
+	if (strcmp (nombre3, "")==0)
+		printf("Nueva partida %d, Jugadores: %s, %s\n", lista->num, nombre1, nombre2 );
+	else
+		printf("Nueva partida %d, Jugadores: %s, %s, %s\n", lista->num, nombre1, nombre2, nombre3 );
+}
+
 int Elimina (ListaConectados *lista, char nombre[20]){
 	//Elimina en nombre de la lista de conectados
 	int pos = DamePosicion (lista, nombre);
@@ -103,9 +131,24 @@ int Elimina (ListaConectados *lista, char nombre[20]){
 	}
 }
 
+void EliminarPartida (ListaPartidas* lista, int numpartida){
+	int numPartidas = lista->num;
+	
+	if (numpartida < 0 || numpartida >= numPartidas) {
+		
+	}
+	else{
+		for (int i = numpartida; i < numPartidas - 1; i++) {
+		memcpy(&lista->partidas[i], &lista->partidas[i + 1], sizeof(Partida));
+		}
+		lista->num--;
+		
+	}
+}
+
 void DameConectados (ListaConectados *lista, char conectados[300]){
 	//Pone en un vector los nombres de conectados separados por una bcoma
-	//Primero pone el n�mero de conectados. Ej: 3,Maria,Juan,Pedro
+	//Primero pone el n￯﾿ﾽmero de conectados. Ej: 3,Maria,Juan,Pedro
 	sprintf (conectados, "%d", lista->num);
 	printf ("%d",lista->num);
 	int i;
@@ -213,7 +256,7 @@ void *AtenderCliente (void *socket)
 		
 		else if (codigo ==100)
 		{
-			//ID/Contrase�a
+			//ID/Contrase￯﾿ﾽa
 			char nombre_usuario[40];
 			char contrasena [40];
 			char consulta [800];
@@ -272,10 +315,63 @@ void *AtenderCliente (void *socket)
 			}	
 			printf ("%s",respuesta);
 		}
+		else if( codigo == 720)
+		{
+			char usuario[20];
+			char contractual[50];
+			char contranueva[50];
+			char consulta[200];
+			strcpy(respuesta, "720/");
+			
+			t = strtok(NULL, "/");
+			strcpy(usuario, t);
+			
+			t = strtok(NULL, "/");
+			strcpy(contractual, t);
+			
+			t = strtok(NULL, "/");
+			strcpy(contranueva, t);
+			
+			
+			
+			strcpy(consulta, "UPDATE JUGADORES SET Contrasena = '");
+			strcat(consulta, contranueva);
+			strcat(consulta, "' WHERE USUARIO = '");
+			strcat(consulta, usuario);
+			strcat(consulta, " ' AND Contrasena = '");
+			strcat(consulta, contractual);
+			strcat(consulta, "'");
+			
+			
+			
+			err=mysql_query (conn, consulta);
+			if (err!=0) {
+				printf ("Error al consultar datos2 de la base %u %s\n",
+						mysql_errno(conn), mysql_error(conn));
+				
+				
+			}
+			else
+			{
+				//sprintf(respuesta, "888/Correct");
+			}
+			
+			int numRowsAffected = mysql_affected_rows(conn);
+			
+			if(numRowsAffected > 0)
+			{
+				sprintf(respuesta, "720/Correct");
+			}
+			else
+			{
+				sprintf(respuesta, "720/Incorrect");
+			}
+		}
+			
 		
 		else if (codigo ==101)
 		{
-			//ID/Contrase�a
+			//ID/Contrase￯﾿ﾽa
 			char nombre_usuario[40];
 			char contrasena [40];
 			char consulta [800];
@@ -351,6 +447,50 @@ void *AtenderCliente (void *socket)
 			}
 			else
 				sprintf (respuesta, "101/Incorrect");
+		}
+		else if (codigo ==888)
+		{
+			//ID/Contrase￯﾿ﾽa
+			char nombre_usuario[40];
+			char contrasena [40];
+			char consulta [800];
+			
+			t = strtok( NULL, "/");
+			strcpy (nombre_usuario, t);
+			printf("Nombre usuario %s\n", nombre_usuario);
+			
+			t = strtok( NULL, "/");
+			strcpy (contrasena, t);
+			printf("Contrasena %s\n", contrasena);
+			
+			strcpy(consulta, "DELETE FROM JUGADORES WHERE JUGADORES.USUARIO='");
+			strcat(consulta, nombre_usuario);
+			strcat(consulta, "' AND JUGADORES.Contrasena = '");
+			strcat(consulta, contrasena);
+			strcat(consulta, "';");
+			
+			err=mysql_query (conn, consulta);
+			if (err!=0) {
+				printf ("Error al consultar datos2 de la base %u %s\n",
+						mysql_errno(conn), mysql_error(conn));
+				
+				
+			}
+			else
+			{
+				//sprintf(respuesta, "888/Correct");
+			}
+			
+			int numRowsAffected = mysql_affected_rows(conn);
+			
+			if(numRowsAffected > 0)
+			{
+				sprintf(respuesta, "888/Correct");
+			}
+			else
+			{
+				sprintf(respuesta, "888/Incorrect");
+			}
 		}
 		
 		else if (codigo ==1) //Consultar el numero de partidas que ha ganado un jugador
@@ -556,7 +696,7 @@ void *AtenderCliente (void *socket)
 			for(int j = 0; j < miLista2.num; j++)
 			{
 				printf("Nombre lista |%s| posicion %i nombre cmp |%s|", miLista2.conectados[j].nombre, j, nombre);
-				if(miLista2.conectados[j].nombre == nombre)
+				if(strcmp(miLista2.conectados[j].nombre, nombre) == 0)
 				{
 					//write (miLista2.conectados[j].socket, respuesta, strlen(respuesta));
 					printf("Enviando invitacion a %s", nombre);
@@ -592,48 +732,244 @@ void *AtenderCliente (void *socket)
 			for(int j = 0; j < miLista2.num; j++)
 			{
 				printf("Nombre lista |%s| posicion %i nombre cmp |%s| \n", miLista2.conectados[j].nombre, j, nombreAnfitrion);
-				
-				if(miLista2.conectados[j].nombre == nombreAnfitrion)
-				{
-				//	write (miLista2.conectados[j].socket, respuesta, strlen(respuesta));
-				}
 				write (sockets[j], respuesta, strlen(respuesta));
 			}
 			
 			pthread_mutex_unlock(&mutex); //Ahora si se puede interrumpir
 		}
-		else if(codigo == 997)
+
+		else if(codigo == 997)		 
 		{
+			char mensaje[100];
 			
-			char nombre[20]; // nombre del invitado
-			strcpy(respuesta, "997/"); // 991
+			char username[20]; // nombre del que envia el mensaje
+			
+			strcpy(respuesta, "997/"); // 997
+			t = strtok( NULL, "/"); //texto mensaje
+			
+			strcpy(mensaje, t); //
 			
 			t = strtok( NULL, "/");
-			strcat(respuesta, t); //Mensaje
-			strcat(respuesta, "/");
-			t = strtok( NULL, "/"); 
-			strcat(respuesta, t); // texto mensaje
-			strcat(respuesta, "/");
-			t = strtok( NULL, "/");
-			strcat(respuesta, t); // username
 			
-			printf("Enviando mensaje %s. \n", respuesta);
-			
+			strcpy(username, t); // username
 			pthread_mutex_lock(&mutex); //No interrumpir
+			sprintf(respuesta, "997/%s/%s/%s", mensaje, username, nombreAnfitrion);
+			printf("Enviando mensaje %s. \n", respuesta);
 			
 			for(int j = 0; j < miLista2.num; j++)
 			{
-				//printf("Nombre lista |%s| posicion %i nombre cmp |%s| \n", miLista2.conectados[j].nombre, j, nombreAnfitrion);
-				
-				if(miLista2.conectados[j].nombre == nombreAnfitrion)
-				{
-					//	write (miLista2.conectados[j].socket, respuesta, strlen(respuesta));
-				}
+				printf("Enviando mensaje de chat a %s: %s. \n",miLista2.conectados[j].nombre, respuesta);
+				write (sockets[j], respuesta, strlen(respuesta));
+			}
+			pthread_mutex_unlock(&mutex); //No interrumpir
+		}
+		
+		else if(codigo == 999) // empieza la partida
+		{
+			char participantes[100];
+			char nombre1[20];
+			char nombre2[20];
+			char nombre3[20];
+			char username[20]; // nombre del que envia el mensaje
+			
+			strcpy(respuesta, "999/"); // 999
+			
+			t = strtok( NULL, "/"); //texto mensaje
+			
+			strcpy(username, t); //
+			
+			t = strtok( NULL, "/");
+			
+			strcpy(participantes, t); // username
+			pthread_mutex_lock(&mutex); //No interrumpir
+			
+			char* name = strtok(participantes, "-");
+			strcpy(nombre1, name);
+			
+			name = strtok(NULL, "-");
+			strcpy(nombre2, name);
+			name = strtok(NULL, "-");
+			if(name == NULL)
+			{
+				strcpy(nombre3, "");
+			}
+			else{
+				strcpy(nombre3, name);
+			}
+			//A￱adirla a ListaPartidas
+			PartidaNueva(nombre1, nombre2, nombre3, &miListaPartidas);
+			int numero_partida = miListaPartidas.num;
+			if (strcmp(nombre3, "")==0)
+			{
+				sprintf(respuesta, "999/%d/%s/%s-%s", numero_partida, username, nombre1, nombre2);
+			}
+			else
+				sprintf(respuesta, "999/%d/%s/%s-%s-%s", numero_partida, username, nombre1, nombre2, nombre3);
+			printf("Enviando mensaje %s. \n", respuesta);
+			
+			for(int j = 0; j < miLista2.num; j++)
+			{
+				printf("Enviando mensaje de chat a %s: %s. \n",miLista2.conectados[j].nombre, respuesta);
 				write (sockets[j], respuesta, strlen(respuesta));
 			}
 			
-			pthread_mutex_lock(&mutex); //No interrumpir
-
+			pthread_mutex_unlock(&mutex); //No interrumpir
+		}
+		
+		else if (codigo == 50)//Tanque
+		{
+			int numpartida;
+			char jugador[5];
+			int x;
+			int y;
+			int direccion;
+			
+			strcpy(respuesta, "50/"); // 50
+			
+			t = strtok( NULL, "/"); //numpartida
+			numpartida = atoi(t);
+			
+			t = strtok( NULL, "/");
+			strcpy(jugador, t);
+			
+			t = strtok( NULL, "/");
+			x = atoi(t);
+			t = strtok( NULL, "/");
+			y = atoi(t);
+			t = strtok( NULL, "/");
+			direccion = atoi(t);
+			
+			pthread_mutex_lock(&mutex);
+			
+			sprintf(respuesta, "50/%d/%s/%d/%d/%d/", numpartida, jugador, x, y, direccion);
+			for(int j = 0; j < miLista2.num; j++)
+			{
+				write (sockets[j], respuesta, strlen(respuesta));
+				
+			}
+			
+			pthread_mutex_unlock(&mutex);
+		}
+		
+		else if (codigo == 51)//Balas
+		{
+			int numpartida;
+			char oponente[5];
+			int x;
+			int y;
+			char direccion[20];
+			
+			strcpy(respuesta, "51/"); // 52
+			
+			t = strtok( NULL, "/"); //numpartida
+			numpartida = atoi(t);
+			t = strtok( NULL, "/");
+			strcpy(oponente, t);
+			t = strtok( NULL, "/");
+			x = atoi(t);
+			t = strtok( NULL, "/");
+			y = atoi(t);
+			t=strtok(NULL,"/");
+			strcpy(direccion, t);
+			
+			pthread_mutex_lock(&mutex);
+			
+			sprintf(respuesta, "51/%d/%s/%d/%d/%s/", numpartida, oponente, x, y, direccion);
+			for(int j = 0; j < miLista2.num; j++)
+			{
+				write (sockets[j], respuesta, strlen(respuesta));
+				
+			}
+			
+			pthread_mutex_unlock(&mutex);
+		}
+		
+		else if (codigo == 52)//Cubo
+		{
+			int numpartida;
+			int num_cubo;
+			int num_img;
+			
+			strcpy(respuesta, "52/"); // 52
+			
+			t = strtok( NULL, "/"); //numpartida
+			numpartida = atoi(t);
+			
+			t = strtok( NULL, "/");
+			num_cubo = atoi(t);
+			t = strtok( NULL, "/");
+			num_img = atoi(t);
+			
+			pthread_mutex_lock(&mutex);
+			
+			sprintf(respuesta, "52/%d/%d/%d/", numpartida, num_cubo, num_img);
+			for(int j = 0; j < miLista2.num; j++)
+			{
+				write (sockets[j], respuesta, strlen(respuesta));
+				
+			}
+			
+			pthread_mutex_unlock(&mutex);
+		}
+		
+		
+		else if (codigo == 53)//PowerUp
+		{
+			int numpartida;
+			int num_cubo;
+			int vidas;
+			char oponente[5];
+			
+			strcpy(respuesta, "53/"); // 53
+			
+			t = strtok( NULL, "/"); //numpartida
+			numpartida = atoi(t);
+			
+			t = strtok( NULL, "/");
+			num_cubo = atoi(t);
+			t = strtok( NULL, "/");
+			vidas = atoi(t);
+			t=strtok(NULL,"/");
+			strcpy(oponente, t);
+			pthread_mutex_lock(&mutex);
+			
+			sprintf(respuesta, "53/%d/%d/%d/%s/", numpartida, num_cubo, vidas, oponente);
+			for(int j = 0; j < miLista2.num; j++)
+			{
+				write (sockets[j], respuesta, strlen(respuesta));
+				
+			}
+			
+			pthread_mutex_unlock(&mutex);
+		}
+		
+		
+		else if (codigo == 54)//Vidas
+		{
+			int numpartida;
+			char oponente[5];
+			int vidas;
+			
+			strcpy(respuesta, "54/"); // 54
+			
+			t = strtok( NULL, "/"); //numpartida
+			numpartida = atoi(t);
+			
+			t = strtok( NULL, "/");
+			strcpy(oponente, t);
+			t = strtok( NULL, "/");
+			vidas = atoi(t);
+			
+			pthread_mutex_lock(&mutex);
+			
+			sprintf(respuesta, "54/%d/%s/%d/", numpartida, oponente, vidas);
+			for(int j = 0; j < miLista2.num; j++)
+			{
+				write (sockets[j], respuesta, strlen(respuesta));
+				
+			}
+			
+			pthread_mutex_unlock(&mutex);
 		}
 		
 		if (codigo != 0)
@@ -703,7 +1039,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// Establecemos el puerto 
-	serv_adr.sin_port = htons(9000);
+	serv_adr.sin_port = htons(9500);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind");
 	

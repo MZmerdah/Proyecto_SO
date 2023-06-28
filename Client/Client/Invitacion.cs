@@ -50,5 +50,10 @@ namespace Client
             EnviarDatos($"991/Invitacion/{anfitrion}/{username}/rechazar", socket);
             this.Close();
         }
+
+        private void Invitacion_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

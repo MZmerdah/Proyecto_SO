@@ -28,49 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this._2jugadores = new System.Windows.Forms.RadioButton();
+            this._3jugadores = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this._1jugador = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
-            // radioButton1
+            // _2jugadores
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(75, 101);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(80, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "2 jugadores";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this._2jugadores.AutoSize = true;
+            this._2jugadores.Location = new System.Drawing.Point(75, 101);
+            this._2jugadores.Name = "_2jugadores";
+            this._2jugadores.Size = new System.Drawing.Size(80, 17);
+            this._2jugadores.TabIndex = 0;
+            this._2jugadores.TabStop = true;
+            this._2jugadores.Text = "2 jugadores";
+            this._2jugadores.UseVisualStyleBackColor = true;
+            this._2jugadores.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // radioButton2
+            // _3jugadores
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(75, 143);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(80, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "3 jugadores";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(75, 182);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(80, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "4 jugadores";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this._3jugadores.AutoSize = true;
+            this._3jugadores.Location = new System.Drawing.Point(75, 143);
+            this._3jugadores.Name = "_3jugadores";
+            this._3jugadores.Size = new System.Drawing.Size(80, 17);
+            this._3jugadores.TabIndex = 1;
+            this._3jugadores.TabStop = true;
+            this._3jugadores.Text = "3 jugadores";
+            this._3jugadores.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -89,7 +76,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "ACEPTAR";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Aceptar_Click);
             // 
             // button2
             // 
@@ -99,31 +86,30 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "CANCELAR";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Rechazar_Click);
             // 
-            // radioButton4
+            // _1jugador
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(75, 63);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(69, 17);
-            this.radioButton4.TabIndex = 6;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "1 jugador";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this._1jugador.AutoSize = true;
+            this._1jugador.Location = new System.Drawing.Point(75, 63);
+            this._1jugador.Name = "_1jugador";
+            this._1jugador.Size = new System.Drawing.Size(69, 17);
+            this._1jugador.TabIndex = 6;
+            this._1jugador.TabStop = true;
+            this._1jugador.Text = "1 jugador";
+            this._1jugador.UseVisualStyleBackColor = true;
             // 
             // Jugadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(247, 259);
-            this.Controls.Add(this.radioButton4);
+            this.Controls.Add(this._1jugador);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this._3jugadores);
+            this.Controls.Add(this._2jugadores);
             this.Name = "Jugadores";
             this.Text = "Jugadores";
             this.ResumeLayout(false);
@@ -133,12 +119,11 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton _2jugadores;
+        private System.Windows.Forms.RadioButton _3jugadores;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton _1jugador;
     }
 }
